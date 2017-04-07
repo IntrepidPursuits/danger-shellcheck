@@ -1,6 +1,6 @@
 # danger-shellcheck
 
-![Travis](https://travis-ci.org/IntrepidPursuits/danger-shellcheck.svg)
+[![Build Status](https://travis-ci.org/IntrepidPursuits/danger-shellcheck.svg?branch=master)](https://travis-ci.org/IntrepidPursuits/danger-shellcheck)
 [![Coverage Status](https://coveralls.io/repos/github/IntrepidPursuits/danger-shellcheck/badge.svg?branch=master)](https://coveralls.io/github/IntrepidPursuits/danger-shellcheck?branch=master)
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
