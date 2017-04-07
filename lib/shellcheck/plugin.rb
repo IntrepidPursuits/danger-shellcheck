@@ -47,42 +47,42 @@ module Danger
     private
 
     def run_summary(shellcheck_summary)
-      $files = Set.new
-      $error_count = 0
-      $warning_count = 0
-      $info_count = 0
-      $style_count = 0
+      @files = Set.new
+      @error_count = 0
+      @warning_count = 0
+      @info_count = 0
+      @style_count = 0
 
       # Parse the file violations
       parse_files(shellcheck_summary)
 
       # Output the ShellCheck summary
-      message(summary_message(), sticky: sticky_summary)
+      message(summary_message, sticky: sticky_summary)
     end
 
     def summary_message
-      "ShellCheck Summary: Analyzed #{$files.size} files. Found #{$error_count} errors. #{$warning_count} Warnings, #{$info_count} Info and #{$style_count} Style Violations."
+      "ShellCheck Summary: Analyzed #{@files.size} files. Found #{@error_count} errors. #{@warning_count} Warnings, #{@info_count} Info and #{@style_count} Style Violations."
     end
 
     # A method that takes the ShellCheck summary and parses any violations found
     def parse_files(shellcheck_summary)
       shellcheck_summary.each do |element|
         file = element[:file]
-        $files.add(file)
+        @files.add(file)
         level = element[:level]
 
         message = format_violation(file, element)
 
         if level == 'error'
-          $error_count = $error_count + 1
+          @error_count += 1
           fail(message, sticky: false)
         else
           if level == 'warning'
-            $warning_count = $warning_count + 1
+            @warning_count += 1
           elsif level == 'info'
-            $info_count = $info_count + 1
+            @info_count += 1
           else
-            $style_count = $style_count + 1
+            @style_count += 1
           end
           warn(message, sticky: false)
         end
