@@ -1,0 +1,1 @@
+require 'shellcheck/plugin'
